@@ -1,0 +1,40 @@
+workflows:
+  flutter-app:
+    name: Flutter App
+    max_build_duration: 60
+    environment:
+      flutter: stable
+      xcode: latest
+      cocoapods: default
+    scripts:
+      - name: Set up local.properties
+        script: |
+          echo "flutter.sdk=$HOME/programs/flutter" > edubot/android/local.properties
+      - name: Get Flutter packages
+        script: |
+          cd edubot
+          flutter packages pub get
+      - name: Flutter analyze
+        script: |
+          cd edubot
+          flutter analyze
+      - name: Flutter unit tests
+        script: |
+          cd edubot
+          flutter test
+      - name: Build APK
+        script: |
+          cd edubot
+          flutter build apk --release
+      - name: Build iOS
+        script: |
+          cd edubot
+          flutter build ios --release --no-codesign
+    artifacts:
+      - edubot/build/**/outputs/**/*.apk
+      - edubot/build/**/outputs/**/mapping.txt
+      - edubot/build/ios/ipa/*.ipa
+      - edubot/build/ios/ipa/*.dSYM.zip
+      - edubot/build/macos/Build/Products/Release/*.app
+      - edubot/build/windows/**/Release/runner.exe
+      - edubot/build/linux/**/release/bundle

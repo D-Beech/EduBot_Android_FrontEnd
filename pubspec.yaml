@@ -1,0 +1,6 @@
+name: flutter_firebase_app
+description: Flutter Firebase App with Edubot
+publish_to: 'none'
+
+# This is a workspace configuration file
+# The actual Flutter app is located in the edubot/ directory
