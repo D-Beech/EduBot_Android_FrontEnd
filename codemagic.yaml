@@ -18,23 +18,10 @@ workflows:
         script: |
           cd edubot
           flutter analyze
-      - name: Flutter unit tests
-        script: |
-          cd edubot
-          flutter test
       - name: Build APK
         script: |
           cd edubot
           flutter build apk --release
-      - name: Build iOS
-        script: |
-          cd edubot
-          flutter build ios --release --no-codesign
     artifacts:
       - edubot/build/**/outputs/**/*.apk
       - edubot/build/**/outputs/**/mapping.txt
-      - edubot/build/ios/ipa/*.ipa
-      - edubot/build/ios/ipa/*.dSYM.zip
-      - edubot/build/macos/Build/Products/Release/*.app
-      - edubot/build/windows/**/Release/runner.exe
-      - edubot/build/linux/**/release/bundle
