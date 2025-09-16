@@ -26,7 +26,7 @@ class _DarkModeToggleState extends State<DarkModeToggle> {
     return SwitchListTile(
       // Set the tile style
       contentPadding: EdgeInsets.symmetric(horizontal: 27),
-      activeColor: Color(0xFF1A1A1A),
+      activeThumbColor: Color(0xFF1A1A1A),
       inactiveThumbColor: Color(0xFF1A1A1A),
       activeTrackColor: Color(0xFF99DAE6),
       title: Text(
